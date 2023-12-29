@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Laptop(models.Model):
+class Laptops(models.Model):
     """ Класс ноутбук """
 
     url = models.CharField(max_length=255, unique=True, verbose_name='Ссылка')
@@ -29,11 +29,11 @@ class Laptop(models.Model):
         return f'{self.title} | {self.price}'
 
 
-class Images(models.Model):
+class Image(models.Model):
     """ Изображения """
 
     image = models.URLField(max_length=255, unique=True)
-    laptop = models.ForeignKey(Notebook, on_delete=models.CASCADE, related_name='image')
+    laptop = models.ForeignKey(Laptops, on_delete=models.CASCADE, related_name='image')
 
     class Meta:
         verbose_name = 'Изображение'
